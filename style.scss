@@ -1,0 +1,52 @@
+$greencolor: green;
+$redcolor: red;
+$bluecolor: blue;
+
+@mixin square($color, $bordercolor, $fontsize: 1rem){
+    color: $color;
+    border: 1px solid $bordercolor;
+    font-size: $fontsize;
+    text-align: center;
+    padding: 10px;
+}
+
+div{
+    border: solid 1px red;
+    width: 100vw;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+        h1{
+            color: $greencolor;
+            margin-bottom: 2px;
+            border-bottom: 1px solid $bluecolor;
+        }
+
+        section{
+            display: flex;
+            width: 95%;
+            // margin: 0 20px;
+
+
+                article:nth-child(odd){
+                    @include square($bluecolor, $greencolor);
+
+                }
+                article:nth-child(even){
+                    @include square($redcolor, $greencolor);
+
+                }
+        }
+
+        section:last-child{
+            article{
+                @include square($greencolor, $bluecolor, 24px);
+                padding: 0 20px;
+                width: 100%;
+            }
+        }
+
+}
